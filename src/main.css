@@ -1,0 +1,217 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins', monospace;
+}
+:root {
+	--index: calc(1vh + 1vw);
+	--transition: 1.25s cubic-bezier(.2, .5, 0, 1);
+	--transition-cursor: 2s cubic-bezier(.05, .5, 0, 1);
+}
+
+body {
+	background-color: whitesmoke;
+	color: #141414;
+}
+
+.container {
+	padding: 0 160px;
+}
+
+.header {
+	text-align: center;
+	padding-top: calc(var(--index) * 6.75);
+	margin-bottom: calc(var(--index) * 8.75);
+}
+
+.header__title {
+	font-size: calc(var(--index) * 1.75);
+	padding-bottom: calc(var(--index) * 1.5);;
+}
+
+.header__desc {
+	font-size: calc(var(--index));
+}
+
+.menu-line {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px calc(var(--index) * -.5);
+}
+
+.nav-item {
+	text-decoration: none;
+	color: black;
+	padding-left: 20px;
+	transition: color .3s linear;
+}
+.nav-item:hover {
+	color: rgb(180, 194, 148);
+	text-decoration: underline;
+}
+
+.about-museum {
+	padding: 44px;
+	background-color: #141414;
+	color: whitesmoke;
+}
+
+.about__element {
+	padding: calc(var(--index) * 1.25);
+	font-size: calc(var(--index) * 0.95);
+	counter-increment: cnter;
+}
+.about__element::before {
+	content: '-';
+	position: absolute;
+	margin-left: calc(var(--index) * -1);
+	font-size: calc(var(--index) * 0.95);
+}
+
+.magic-list {
+	font-size: calc(var(--index) * 2);
+	padding: calc(var(--index) * 2);
+	margin-bottom: 100px;
+}
+
+.magic-list__item {
+	/* margin-bottom: calc(var(--index) * 5); */
+	border-bottom: 1px solid rgb(0 0 0 / .09);
+	padding: calc(var(--index) * 3);
+	counter-increment: magic-counter;
+	display: block;
+}
+
+.magic-list__item::before {
+	content: '(0' counter(magic-counter) ')';
+	position: absolute;
+	font-size: calc(var(--index) * .95);
+	margin-left: calc(var(--index) * -2.5);
+	margin-top: calc(var(--index) / 1.75);
+	letter-spacing: .5px;
+	transition: transform var(--transition);
+	transition-delay: .025s;
+	will-change: transform;
+}
+
+.magic-list__item:first-child {
+	border-top: 1.5px solid rgb(0 0 0 / .09);
+}
+
+.magic-list__item__header {
+	width: min-content;
+	transition: transform var(--transition);
+	will-change: transform;
+}
+
+.magic-list__item:hover .magic-list__item__header,
+.magic-list__item:hover::before {
+	transform: translate3d(calc(var(--index) * -5), 0, 0);
+}
+
+.magic-list__cursor {
+	--width: calc(var(--index) * 	22);
+	--height: calc(var(--index) * 14);
+	position: fixed;
+	width: var(--width);
+	height: var(--height);
+	top: calc(var(--height) * -0.5);
+	left: calc(var(--width) * -0.5);
+	overflow: hidden;
+	transform: translate3d(var(--move-x), var(--move-y), 0);
+	transition: transform var(--transition-cursor), height 1s ease;
+	z-index: -1;
+	will-change: transform;
+	height: 0;	
+}
+
+.magic-list__item:hover .magic-list__cursor{
+	height: var(--height);
+}
+
+.magic-list__cursor-image {
+	--cursor-transform: translate3d(calc(var(--move-x) / -5), calc(var(--move-y) / -5), 0);
+	position: relative;
+	width: calc(var(--width) * 2);
+	height: calc(var(--height) * 2);
+	top: calc(var(--height) * -0.4);
+	left: calc(var(--width) * -0.25);
+	background-size: cover;
+	background-position: center;
+	transform: var(--cursor-transform) scale(1.5);
+	transition: transform var(--transition);
+}
+
+.magic-list__item:hover .magic-list__cursor-image {
+	transform: var(--cursor-transform) scale(1);
+}
+
+.artists {
+	margin-top: 166px;
+	padding-bottom: 200px;
+}
+
+.artists__holder {
+	display: flex;
+	justify-content: space-between;
+}
+
+.artists__info {
+	display: block;
+	font-size: calc(var(--index));
+	padding-right: 30vw;
+	min-width: 30vw;
+	max-width: 50vw;
+}
+
+.artists__info__title {
+	font-size: calc(var(--index) * 2.5);
+	text-align: center;
+	margin-bottom: 21px;
+	min-width: 30vw;
+	max-width: 50vw;
+}
+
+.artists__info__desc {
+	text-align: center;
+	min-width: 30vw;
+	max-width: 50vw;
+}
+.artists__paintings {
+	display: flex;
+}
+
+.painting-1 {
+	background: url(../assets/paintings/1.jpg) fixed;
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: calc(var(--index) * 33.75);
+	height: calc(var(--index) * 22.5);
+	position: relative;
+	top: calc(var(--index) * -2);
+	left: calc(var(--index) * -7.25);
+}
+
+.footer {
+	background-color: black;
+	padding: calc(var(--index) * 2);
+	text-align: center;
+	color: white;
+	font-size: calc(var(--index) * 0.95);
+}
+
+/* .slider {
+	overflow: visible;
+}
+.slider .slider__wrapper {
+	transition: var(--transition)!important;
+	will-change: transform;
+}
+.slider__item {
+	transition: var(--transition)!important;
+	margin-bottom: calc(var(--index) * 2.6);
+	cursor: pointer;
+	transition: transfrom var(--transition);
+	box-shadow: rgb(0 0 0 / .15) 0 0 30px 10px;
+} */
