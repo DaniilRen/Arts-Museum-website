@@ -47,7 +47,7 @@ body {
 	transition: color .3s linear;
 }
 .nav-item:hover {
-	color: rgb(180, 194, 148);
+	color: rgb(212, 221, 88);
 	text-decoration: underline;
 }
 
@@ -199,6 +199,69 @@ body {
 	text-align: center;
 	color: white;
 	font-size: calc(var(--index) * 0.95);
+}
+
+/* .modal-overlay {
+	background-color: #141414;
+	background-position:center;
+	opacity: 75%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+} */
+
+.contacts-modal {
+	opacity: 0;
+	border-radius: 8px;
+	position: fixed;
+	width: 40vw;
+	height: 50vh;
+	left: 50%;
+	top: 50%;
+	z-index: 3;
+	background-color: whitesmoke;
+	transform: translate(-50%, -50%);
+	transition: opacity .3s ease;
+	box-shadow: 0 0 30px 1px #686565;
+}
+
+.visible {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 100%;
+}
+
+.modal-content {
+	font-size: calc(var(--index) * 1.25);
+	padding: 0 calc(var(--index) * 1.5);
+
+}
+
+.question-1 {
+	padding-bottom: calc(var(--index) * 1.5);
+	padding-top: calc(var(--index) * 0.5);
+}
+.question-2 {
+	padding-bottom: calc(var(--index) * 1.5);
+	padding-top: calc(var(--index) * 1.5);
+}
+
+.modal-element {
+	padding-bottom: calc(var(--index) * 0.5);
+	font-size: calc(var(--index) * 1);
+}
+
+.modal-close {
+	position: absolute;
+	font-size: calc(var(--index) * 1.75);
+	right: calc(var(--index) * 0.75);
+	top: calc(var(--index) * 0.5);
+	transform: rotate(135deg);
+	user-select: none;
 }
 
 /* .slider {
