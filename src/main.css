@@ -7,15 +7,16 @@
 	--index: calc(1vh + 1vw);
 	--transition: 1.25s cubic-bezier(.2, .5, 0, 1);
 	--transition-cursor: 2s cubic-bezier(.05, .5, 0, 1);
+	--gradient: radial-gradient(circle, rgb(197, 214, 210) 5%, rgb(255, 255, 246) 100%);
 }
 
 body {
-	background-color: whitesmoke;
+	background: var(--gradient);
 	color: #141414;
 }
 
 .container {
-	padding: 0 160px;
+	padding: 0 calc(var(--index) * 6.75);
 }
 
 .header {
@@ -25,12 +26,13 @@ body {
 }
 
 .header__title {
-	font-size: calc(var(--index) * 1.75);
-	padding-bottom: calc(var(--index) * 1.5);;
+	text-shadow: 0px 4px 2px rgba(0, 0, 0, 0.34);
+	font-size: calc(var(--index) * 2);
+	margin-bottom: calc(var(--index) * 2.25);;
 }
 
 .header__desc {
-	font-size: calc(var(--index));
+	font-size: calc(var(--index) * 1.15);
 }
 
 .menu-line {
@@ -40,15 +42,23 @@ body {
 	padding: 30px calc(var(--index) * -.5);
 }
 
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  width: calc(var(--index) * 28);
+}
+
 .nav-item {
 	text-decoration: none;
 	color: black;
 	padding-left: 20px;
 	transition: color .3s linear;
+	transition: scale .075s ease, font-weight .005s ease;
 }
 .nav-item:hover {
-	color: rgb(212, 221, 88);
-	text-decoration: underline;
+	cursor: pointer;
+	scale: 1.09;
+  font-weight: bold;
 }
 
 .about-museum {
@@ -59,7 +69,7 @@ body {
 
 .about__element {
 	padding: calc(var(--index) * 1.25);
-	font-size: calc(var(--index) * 0.95);
+	font-size: calc(var(--index) * 1);
 	counter-increment: cnter;
 }
 .about__element::before {
@@ -70,13 +80,13 @@ body {
 }
 
 .magic-list {
-	font-size: calc(var(--index) * 2);
+	font-size: calc(var(--index) * 2.5);
 	padding: calc(var(--index) * 2);
 	margin-bottom: 100px;
 }
 
 .magic-list__item {
-	/* margin-bottom: calc(var(--index) * 5); */
+	cursor: none;
 	border-bottom: 1px solid rgb(0 0 0 / .09);
 	padding: calc(var(--index) * 3);
 	counter-increment: magic-counter;
@@ -148,8 +158,8 @@ body {
 }
 
 .artists {
-	margin-top: 166px;
-	padding-bottom: 200px;
+	margin-top: calc(var(--index) * 10);
+	margin-bottom: calc(var(--index) * 4);
 }
 
 .artists__holder {
@@ -159,14 +169,14 @@ body {
 
 .artists__info {
 	display: block;
-	font-size: calc(var(--index));
+	font-size: calc(var(--index) * 1);
 	padding-right: 30vw;
 	min-width: 30vw;
 	max-width: 50vw;
 }
 
 .artists__info__title {
-	font-size: calc(var(--index) * 2.5);
+	font-size: calc(var(--index) * 3);
 	text-align: center;
 	margin-bottom: 21px;
 	min-width: 30vw;
@@ -183,14 +193,22 @@ body {
 }
 
 .painting-1 {
-	background: url(../assets/paintings/1.jpg) fixed;
-	background-size: contain;
-	background-repeat: no-repeat;
-	width: calc(var(--index) * 33.75);
-	height: calc(var(--index) * 22.5);
+	box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.34);
+	width: calc(var(--index) * 25.3125);
+	height: calc(var(--index) * 16.875);
 	position: relative;
-	top: calc(var(--index) * -2);
-	left: calc(var(--index) * -7.25);
+	top: calc(var(--index) * -0.75);
+	left: calc(var(--index) * -15.25);
+}
+
+.painting-2 {
+	box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.34);
+	width: calc(var(--index) * 20);
+	height: calc(var(--index) *25);
+	position: relative;
+	z-index: -1;
+	top: calc(var(--index) * -4);
+	left: calc(var(--index) * -30.75);
 }
 
 .footer {
@@ -240,11 +258,6 @@ body {
 	opacity: 100%;
 }
 
-.modal__opened {
-	position: fixed;
-	overflow: hidden;
-}
-
 .modal-content {
 	font-size: calc(var(--index) * 1.25);
 	padding: 0 calc(var(--index) * 1.5);
@@ -271,18 +284,3 @@ body {
 	transform: rotate(135deg);
 	user-select: none;
 }
-
-/* .slider {
-	overflow: visible;
-}
-.slider .slider__wrapper {
-	transition: var(--transition)!important;
-	will-change: transform;
-}
-.slider__item {
-	transition: var(--transition)!important;
-	margin-bottom: calc(var(--index) * 2.6);
-	cursor: pointer;
-	transition: transfrom var(--transition);
-	box-shadow: rgb(0 0 0 / .15) 0 0 30px 10px;
-} */
